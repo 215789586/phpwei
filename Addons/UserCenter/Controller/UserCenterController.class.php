@@ -50,10 +50,15 @@ class UserCenterController extends AddonsController {
 		}
 		$nickname = I ( 'nickname' );
 		if ($nickname) {
-			$map ['u.uid'] = array (
-					'in',
-					D ( 'Common/User' )->searchUser ( $nickname ) 
-			);
+			$uidstr=D ( 'Common/User' )->searchUser ( $nickname );
+			if ($uidstr){
+				$map ['u.uid'] = array (
+						'in',
+						$uidstr
+				);
+			}else{
+				$map['u.uid']=0;
+			}
 		}
 		$row = empty ( $model ['list_row'] ) ? 20 : $model ['list_row'];
 		$order = 'u.uid desc';

@@ -4538,7 +4538,12 @@ CREATE TABLE `wp_visit_log` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of wp_vote
+-- Records of wp_visit_log
+-- ----------------------------
+
+
+-- ----------------------------
+-- Table structure for `wp_vote`
 -- ----------------------------
 DROP TABLE IF EXISTS `wp_vote`;
 CREATE TABLE `wp_vote` (
@@ -4574,9 +4579,13 @@ INSERT INTO `wp_attribute` (`name`,`title`,`field`,`type`,`value`,`remark`,`is_s
 INSERT INTO `wp_attribute` (`name`,`title`,`field`,`type`,`value`,`remark`,`is_show`,`extra`,`model_id`,`is_must`,`status`,`update_time`,`create_time`,`validate_rule`,`validate_time`,`error_info`,`validate_type`,`auto_rule`,`auto_time`,`auto_type`) VALUES ('template','素材模板','varchar(255) NULL','string','default','','1','','0','0','1','1430188739','1430188739','','3','','regex','','3','function');
 UPDATE `wp_attribute` SET model_id= (SELECT MAX(id) FROM `wp_model`) WHERE model_id=0;
 
+-- ----------------------------
+-- Records of wp_vote
+-- ----------------------------
+
 
 -- ----------------------------
--- Records of wp_vote_log
+-- Table structure for `wp_vote_log`
 -- ----------------------------
 DROP TABLE IF EXISTS `wp_vote_log`;
 CREATE TABLE `wp_vote_log` (
@@ -4596,6 +4605,14 @@ INSERT INTO `wp_attribute` (`name`,`title`,`field`,`type`,`value`,`remark`,`is_s
 INSERT INTO `wp_attribute` (`name`,`title`,`field`,`type`,`value`,`remark`,`is_show`,`extra`,`model_id`,`is_must`,`status`,`update_time`,`create_time`,`validate_rule`,`validate_time`,`error_info`,`validate_type`,`auto_rule`,`auto_time`,`auto_type`) VALUES ('cTime','创建时间','int(10) NULL','datetime','','','0','','0','0','1','1429874378','1388934392','','3','','regex','','3','function');
 UPDATE `wp_attribute` SET model_id= (SELECT MAX(id) FROM `wp_model`) WHERE model_id=0;
 
+-- ----------------------------
+-- Records of wp_vote_log
+-- ----------------------------
+
+
+-- ----------------------------
+-- Table structure for `wp_vote_option`
+-- ----------------------------
 DROP TABLE IF EXISTS `wp_vote_option`;
 CREATE TABLE `wp_vote_option` (
 `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
@@ -4614,6 +4631,9 @@ INSERT INTO `wp_attribute` (`name`,`title`,`field`,`type`,`value`,`remark`,`is_s
 INSERT INTO `wp_attribute` (`name`,`title`,`field`,`type`,`value`,`remark`,`is_show`,`extra`,`model_id`,`is_must`,`status`,`update_time`,`create_time`,`validate_rule`,`validate_time`,`error_info`,`validate_type`,`auto_rule`,`auto_time`,`auto_type`) VALUES ('vote_id','投票ID','int(10) unsigned NOT NULL ','num','','','4','','0','1','1','1388982678','1388933478','','3','','regex','$_REQUEST[\'vote_id\']','3','string');
 UPDATE `wp_attribute` SET model_id= (SELECT MAX(id) FROM `wp_model`) WHERE model_id=0;
 
+-- ----------------------------
+-- Records of wp_vote_option
+-- ----------------------------
 
 
 -- ----------------------------

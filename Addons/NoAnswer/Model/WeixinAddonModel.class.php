@@ -31,16 +31,20 @@ class WeixinAddonModel extends WeixinModel {
 		
 		switch ($config ['type']) {
 			case '3' :
-				$articles [0] = array (
-						'Title' => $config ['title'],
-						'Description' => $config ['description'],
-						'PicUrl' => get_cover_url ( $config ['pic_url'] ),
-						'Url' => str_replace ( $sreach, $replace, $config ['url'] ) 
-				);
-				$res = $this->replyNews ( $articles );
+			    if ($config['title'] && $config['description']){
+			        $articles [0] = array (
+			        		'Title' => $config ['title'],
+			        		'Description' => $config ['description'],
+			        		'PicUrl' => get_cover_url ( $config ['pic_url'] ),
+			        		'Url' => str_replace ( $sreach, $replace, $config ['url'] )
+			        );
+			        $res = $this->replyNews ( $articles );
+			    }
 				break;
 			default :
-				$res = $this->replyText ( $config ['description'] );
+			    if ($config['description']){
+			        $res = $this->replyText ( $config ['description'] );
+			    }
 		}
 	}
 }

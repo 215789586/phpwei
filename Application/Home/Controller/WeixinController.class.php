@@ -160,8 +160,7 @@ class WeixinController extends HomeController {
 			foreach ( $keyword_cache as $k => $val ) {
 				$addons [$k] = $val;
 			}
-			// addWeixinLog($addons,'textman2');
-			// addWeixinLog($addons,'textman');
+
 		}
 		
 		// 通过精准关键词来定位处理的插件 token=0是插件安装时初始化的模糊关键词，所有公众号都可以用

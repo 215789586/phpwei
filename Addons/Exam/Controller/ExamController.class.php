@@ -38,8 +38,7 @@ class ExamController extends AddonsController {
 		$this->display ( $html );
 	}
 	function profile() {
-		$map ['id'] = $this->mid;
-		$info = M ( 'follow' )->where ( $map )->find ();
+		$info = getUserInfo($this->mid);
 		$this->assign ( 'info', $info );
 		
 		if (IS_POST) {
@@ -51,7 +50,7 @@ class ExamController extends AddonsController {
 			}
 			
 			if (! empty ( $data )) {
-				$res = M ( 'follow' )->where ( $map )->save ( $data );
+				$res = D ( 'Common/User' )->updateInfo($this->mid, $data);
 			}
 			
 			redirect ( U ( 'exam', 'exam_id=' . $_REQUEST ['exam_id'] ) );
