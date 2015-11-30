@@ -12,4 +12,5 @@ db/*
 locks/*
 hooks/*
 conf/*
+format*
 

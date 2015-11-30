@@ -2757,6 +2757,7 @@ function post_data($url, $param, $is_file = false, $return_array = true) {
 	curl_setopt ( $ch, CURLOPT_CUSTOMREQUEST, "POST" );
 	curl_setopt ( $ch, CURLOPT_SSL_VERIFYPEER, FALSE );
 	curl_setopt ( $ch, CURLOPT_SSL_VERIFYHOST, FALSE );
+	curl_setopt ( $ch, CURLOPT_SAFE_UPLOAD, false);
 	curl_setopt ( $ch, CURLOPT_HTTPHEADER, $header );
 	curl_setopt ( $ch, CURLOPT_USERAGENT, 'Mozilla/4.0 (compatible; MSIE 5.01; Windows NT 5.0)' );
 	curl_setopt ( $ch, CURLOPT_FOLLOWLOCATION, 1 );

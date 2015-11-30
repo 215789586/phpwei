@@ -100,8 +100,7 @@ class TestController extends AddonsController {
 			}
 			
 			if (! empty ( $data )) {
-// 				$res = M ( 'follow' )->where ( $map )->save ( $data );
-			    $res=D ( 'Common/User' )->updateInfo($map['id'],$data);
+			    $res = D ( 'Common/User' )->updateInfo($map['id'],$data);
 			}
 			
 			redirect ( U ( 'test', 'test_id=' . $_REQUEST ['test_id'] ) );
