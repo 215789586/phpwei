@@ -66,7 +66,6 @@ class WapController extends AddonsController {
 			$act == 'add' && $_POST ['uid'] = $this->mid;
 			// dump($_POST);exit;
 			$Model = D ( parse_name ( get_table_name ( $this->model ['id'] ), 1 ) );
-			
 			// 获取模型的字段信息
 			$Model = $this->checkAttr ( $Model, $this->model ['id'], $fields );
 			

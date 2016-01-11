@@ -47,6 +47,7 @@ class KeywordModel extends Model {
 	function del($addon, $aim_id, $keyword_type = NULL) {
 		$data ['addon'] = $addon;
 		$data ['aim_id'] = intval ( $aim_id );
+		$data['token']=get_token();//修复删除关键词仍存在关键词的问题
 		$keyword_type === NULL || $data ['keyword_type'] = $keyword_type;
 		return $this->where ( $data )->delete ();
 	}

@@ -14,17 +14,7 @@ class WeixinAddonModel extends WeixinModel {
 			exit ();
 		}
 		
-		// 先尝试小九机器人 目前已不可用
-		if (empty ( $content )) {
-			// $content = $this->_xiaojo ( $dataArr ['Content'] );
-		}
-		
-		// 再尝试小黄鸡
-		if (empty ( $content )) {
-			$content = $this->_simsim ( $dataArr ['Content'] );
-		}
-		
-		// TODO 此处可继续增加其它API接口
+	
 		
 		// 最后只能随机回复了
 		if (empty ( $content )) {
@@ -46,30 +36,7 @@ class WeixinAddonModel extends WeixinModel {
 		return $this->config ['rand_reply'] [$key];
 	}
 	
-	// 小黄鸡
-	private function _simsim($keyword) {
-		$api_url = $this->config ['simsim_url'] . "?key=" . $this->config ['simsim_key'] . "&lc=ch&ft=0.0&text=" . $keyword;
-		
-		$result = file_get_contents ( $api_url );
-		$result = json_decode ( $result, true );
-		
-		return $result ['response'];
-	}
 	
-	// 小九机器人
-	private function _xiaojo($keyword) {
-		$curlPost ['chat'] = $keyword;
-		$ch = curl_init ();
-		curl_setopt ( $ch, CURLOPT_URL, $this->config ['i9_url'] );
-		curl_setopt ( $ch, CURLOPT_HEADER, 0 );
-		curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, 1 );
-		curl_setopt ( $ch, CURLOPT_POST, 1 );
-		curl_setopt ( $ch, CURLOPT_POSTFIELDS, $curlPost );
-		$data = curl_exec ( $ch );
-		curl_close ( $ch );
-		
-		return $data;
-	}
 	
 	// 图灵机器人
 	private function _tuling($keyword) {
@@ -81,18 +48,14 @@ class WeixinAddonModel extends WeixinModel {
 			dump ( '图灵机器人结果：' );
 			dump ( $result );
 		}
-		if ($result ['code'] > 40000) {
-			if ($result ['code'] < 40008 && ! empty ( $result ['text'] )) {
+		if ($result ['code'] > 40000&& $result['code']<40008) {
+			if ( ! empty ( $result ['text'] )) {
 				$this->replyText ( '图灵机器人请你注意：' . $result ['text'] );
 			} else {
 				return false;
 			}
 		}
 		switch ($result ['code']) {
-			case '200000' :
-				$text = $result ['text'] . ',<a href="' . $result ['url'] . '">点击进入</a>';
-				$this->replyText ( $text );
-				break;
 			case '200000' :
 				$text = $result ['text'] . ',<a href="' . $result ['url'] . '">点击进入</a>';
 				$this->replyText ( $text );

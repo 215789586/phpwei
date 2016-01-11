@@ -66,7 +66,7 @@ class FormsController extends AddonsController {
 				$act == 'add' && $id = $res;
 				
 				$this->_setAttr ( $id, $_POST );
-				
+				$this->_saveKeyword ( $this->model, $id ); //插入关键字
 				$this->success ( '保存成功！', U ( 'lists?model=' . $model ['name'], $this->get_param ) );
 			} else {
 				$this->error ( $Model->getError () );
